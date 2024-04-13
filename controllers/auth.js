@@ -85,7 +85,6 @@ export const signin = async (req, res, next) => {
     res.redirect('/home');
   }else{
   try {
-
     const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(404).json({message: "User not found!"});
 
@@ -100,9 +99,9 @@ export const signin = async (req, res, next) => {
          httpOnly: true,
       })
       .status(200)
-      .redirect("/home")
-    console.log("User Validated");
+      .json({message: "User Validated"})
   } catch (err) {
+    //res.status(404)
     next(err);
   }
   }

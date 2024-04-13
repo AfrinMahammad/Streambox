@@ -62,7 +62,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="username" name ="name" id="floatingFirstName" placeholder="name" required>
                         <label for="floatingInput"><i class="fa fa-user"></i>&nbsp; &nbsp;Username</label>
-                        <span class="password-info mt-2" id="feedback-message" ></span>
+                        <span style="font-size: medium;" class="password-info mt-2" id="feedback-message" ></span>
                     </div>
                     
                     <!-- <div class="form-floating mb-3">
@@ -70,12 +70,12 @@
                         <label for="floatingMobile"><i class="fa fa-phone"></i>&nbsp; &nbsp;Mobile Number</label>
                     </div> -->
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{8,}" title="Password must contain at least one number, one alphabet, one special character, and be at least 8 characters long" required>
+                        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}" title="Password must contain at least one number, one alphabet, one special character, and be at least 8 characters long" required>
                         <label for="floatingPassword"><i class="fa fa-lock"></i>&nbsp; &nbsp;Password</label>
-                        <span class="password-info mt-2">Use 8 or more characters with a mix of letters, numbers & symbols</span>
+                        <span style="font-size: small;" class="password-info mt-2">Use 6 or more characters with a mix of letters, numbers & symbols</span>
                     </div><br>
                     
-                      <button type="submit" class="btn btn-primary submit_btn w-100 my-4" >Sign Up</button>
+                      <button type="submit" id="signup" class="btn btn-primary submit_btn w-100 my-4" disabled>Sign Up</button>
                 </form>
             </div>
         </div>
@@ -152,30 +152,30 @@
                     console.error('Error:', error);
                 });
         }
-        // Assuming you have a form with an input field for the username and a feedback message area
+
         const usernameInput = document.getElementById('username');
         const feedbackMessage = document.getElementById('feedback-message');
 
-        // Add event listener to the username input field
         usernameInput.addEventListener('blur', async () => {
             const username = usernameInput.value;
+            if(username!=""){
 
-            // Send a request to the server to check if the username is available
-            const response = await fetch('/auth/check-username', {
+                const response = await fetch('/auth/check-username', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ username })
             });
 
-            // Parse the response JSON
             const data = await response.json();
 
-            // Display feedback to the user based on the response
             if (response.ok) {
-                feedbackMessage.textContent = data.message; // Message indicating username is available
+                feedbackMessage.textContent = data.message; 
+                document.getElementById("signup").removeAttribute('disabled');
             } else {
-                feedbackMessage.textContent = data.message; // Message indicating username is taken
+                feedbackMessage.textContent = data.message;
+                document.getElementById("signup").setAttribute('disabled', true);
             }
+        }
         });
 
     </script>

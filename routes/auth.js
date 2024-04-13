@@ -86,14 +86,9 @@ router.get("/signin",(req, res, next) => {
     res.redirect("/home")
 });
 
-
-
 router.get("/logout",verifyToken, logout);
 
 router.post("/createNewUser", signup);
 router.post("/userValidation", signin);
 
-
-
 export default router;
-

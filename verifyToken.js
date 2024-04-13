@@ -10,8 +10,8 @@ export const verifyToken=(req,res,next)=>{
               res.redirect("/auth/signin")
           }
           else{
-              req.user= user;
-            //   console.log(req.user);
+              req.user= {id:user.id, username:user.username}
+              //console.log(req.user);
               next();
           }
       })

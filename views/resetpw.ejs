@@ -27,7 +27,7 @@
                 <form class="rounded bg-white shadow p-5" action='/auth/resetpw' method="post">
                     <h3 class="text-dark fw-bolder fs-4 mb-2">Reset Password</h3><br>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="rest" name="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{8,}" placeholder="Password" required>
+                        <input type="password" class="form-control" id="rest" name="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}" placeholder="Password" required>
                         <label for="rest"><i class="fa fa-lock"></i>&nbsp; &nbsp;New Password</label><br>
                     </div>
                     <div class="form-floating">

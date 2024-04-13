@@ -18,24 +18,30 @@
     <section class="wrapper" style="padding-top: 150px; padding-bottom: 250px;">
         <div class="container">
             <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="myToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body" id="toast-body">
+                        </div>
+                    </div>
+                </div>
                 <div class="logo">
                     <img src="/images/play.png" class="img-fluid" alt="logo">
                     <h3>StreamBox</h3>
                 </div><br><br>
                 <div class="rounded bg-white shadow p-5">
-                <form method="post" action='/auth/userValidation'>
+                <form >
                     <h3 class="text-dark fw-bolder fs-4 mb-2">Sign In</h3><br>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
+                        <input type="email" name="email" class="form-control" id="floatingInput"  placeholder="name@example.com" required>
                         <label for="floatingInput" ><i class="fa fa-envelope"></i>&nbsp; &nbsp;Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" id="floatingPassword"  placeholder="Password" required>
                         <label for="floatingPassword"><i class="fa fa-lock"></i>&nbsp; &nbsp;Password</label>
                     </div>
-                      <button type="submit" class="btn btn-primary submit_btn w-100 my-4"> Sign In</button>
-                    </form>
-                      <form method="get" action="/auth/forgotpassword">
+                      <button id="signin" class="btn btn-primary submit_btn w-100 my-4"> Sign In</button>
+                </form>
+                    <form method="get" action="/auth/forgotpassword">
                         <button class="btn btn-light"> Forgot Password? </button>
                     </form>
 
@@ -44,5 +50,40 @@
             </div>
         </div>
     </section>
+    <script>
+        const signinBtn = document.getElementById('signin');
+        
+        signinBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            const email = document.getElementById('floatingInput').value;
+            const password = document.getElementById('floatingPassword').value;
+            fetch('/auth/userValidation', {
+                method:'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email: email, password: password}) 
+            })
+            .then(response => {
+                if(response.ok){
+                    console.log("user validated");
+                    window.location.href='/home'
+                }
+                else{
+                    console.log("invalid credentials")
+                    showToastMsg('Invalid Credentials');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+        })
+        function showToastMsg(message) {
+            const myToast = document.getElementById('myToast');
+            const toastbody = document.getElementById('toast-body');
+            toastbody.innerHTML = message;
+            const toast = new bootstrap.Toast(myToast);
+            toast.show();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
