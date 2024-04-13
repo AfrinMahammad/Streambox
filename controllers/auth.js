@@ -30,7 +30,7 @@ export const signup = async (req, res, next) => {
     //res.status(200).send("User has been created!");
     res.redirect("/auth/signin");
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     next(err);
   }
 };
@@ -40,17 +40,18 @@ export const verifyEmail = async (req, res, next) => {
   try{
     const useremail = req.body.email;
     req.session.email = useremail;
-
+    console.log(useremail)
     const user = await User.findOne({ email: useremail });
-    if (user) return res.status(409).json({message: "User already exists!"});
+     if (user) 
+      return res.status(409).json({message: 'usera already exists'});
 
     const name= useremail.split('@')[0]
 
     const otp = generateRandomNumber();
+    console.log(otp)
     req.session.otp = otp;
 
     req.session.save();
-
     const subject = "OTP to verify your email id";
     const html = `<p>Dear ${name}, <br><br></p><p> Your One Time Password to verify your email id is <b>${otp}<b></p> <br>Warm Regards,<br><b>TEAM STREAMBOX.</b>`;
 
@@ -60,7 +61,7 @@ export const verifyEmail = async (req, res, next) => {
       res.status(200).json({message: "Email sent"})
     }
   }catch(err){
-    console.log(err);
+    console.log(err)
     next(err);
   }
 }
@@ -87,13 +88,13 @@ export const signin = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(404).json({message: "User not found!"});
-
+ 
     const isCorrect = await bcrypt.compare(req.body.password, user.password);
     if (!isCorrect) return res.status(400).json({message: "Wrong Credentials"});
-
+ 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: "24h" });
     const { password, ...others } = user._doc;
-
+ 
     res
       .cookie("access_token", token, {
          httpOnly: true,
@@ -200,7 +201,7 @@ export const logout =  (req, res) => {
   res.clearCookie('access_token'); 
   req.session.destroy((err) => {
     if (err) {
-      console.error("Error destroying session:", err);
+      // console.error("Error destroying session:", err);
       return res.status(500).send("Internal server error");
     }else{
       res.redirect("/auth/signup");

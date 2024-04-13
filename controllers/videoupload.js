@@ -223,7 +223,7 @@ export async function deleteS3Object(bucketName, objectKey){
       const data = await s3.deleteObject(params).promise()
       console.log("Object deleted successfully:", data);
     }catch(err){
-        console.error(err);
+        // console.error(err);
     }
 }
 

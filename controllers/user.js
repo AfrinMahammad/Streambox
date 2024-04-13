@@ -76,7 +76,7 @@ export const getUser = async (req,res,next) => {
 };
 
 export const like = async (req, res, next) => {
-    console.log(req.body.id);
+    // console.log(req.body.id);
     try {
         const liked = await User.findOne({ _id: req.user.id, likedVideos: { $in: [req.body.id] } });
         const disliked = await User.findOne({ _id: req.user.id, dislikedVideos: { $in: [req.body.id] } });
@@ -150,8 +150,8 @@ export const trackStatus = async (req, res, next) =>{
         if(watched) res.status(200).json({watched:1})
         else res.status(200).json({watched:0});
     }
-    catch(err){
-        res.status(400);
+    catch (err) {
+        res.status(500).json({ error: err.message }); // Respond with status 500 and error message if an error occurs
     }
 }
 

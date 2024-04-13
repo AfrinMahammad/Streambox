@@ -18,12 +18,18 @@ export const addComment = async (req, res, next) => {
 export const deleteComment = async (req, res, next) => {
     try{
         const comment = await Comment.findOne({_id:req.params.id});
+        if (!comment) {
+            return res.status(404).json({ message: 'Comment not found.' });
+        }
         const video = await Video.findOne({_id:comment.videoId});
+        if (!video) {
+            return res.status(404).json({ message: 'Video not found.' });
+        }
         if(req.user.id === comment.userId || req.user.id === video.userId){
             await Comment.findByIdAndDelete(req.params.id);
             res.status(200).json("Comment deleted.");
         }else{
-            return res.status(403).json("You can delete only your comment!");
+            res.status(403).json({message: 'You can delete only your comment!'})
         }
     }catch(err){
         next(err);

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config()
-
+ 
 export const verifyToken=(req,res,next)=>{
   const token=req.cookies.access_token;
   if(token){
@@ -10,13 +10,13 @@ export const verifyToken=(req,res,next)=>{
               res.redirect("/auth/signin")
           }
           else{
-              req.user= {id:user.id, username:user.username}
-              //console.log(req.user);
+            req.user= {id:user.id, username:user.username}
               next();
           }
       })
   }
   else{
-      res.redirect("/");
+      res.redirect("/auth/signin");
   }
 }
+ 
