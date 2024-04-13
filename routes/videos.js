@@ -33,8 +33,6 @@ router.post("/uploadvideo", verifyToken, upload.fields([
     {name: 'imageFile' , maxCount:1}
 ]),addVideo)
 
-
-//router.get('/playvideo', verifyToken, getVideoVtt)
 router.get('/playvideo', verifyToken, async (req, res) => {
    const custom = await Custom.findOne({userId: req.user.id});
    const logo = await extractS3data(process.env.LOGO_BUCKET, custom.logo);
@@ -52,14 +50,19 @@ router.get('/watchLater', verifyToken, getWatchLater)
 router.post("/watch", verifyToken, watch)
 
 router.post("/add", verifyToken, addVideo)
-// router.put("/:id", verifyToken, addVideo)
+
 router.delete("/:id", verifyToken, deleteVideo)
-//router.get("/find/:id", getVideo)
+
 router.put("/view/:id",addView)
+
 router.put("/plays", verifyToken, plays);
+
 router.get("/trend",trend)
+
 router.get("/tags/:tag", getByTag)
+
 router.get("/search", search)
+
 router.get('/analytics', verifyToken, getAnalytics)
 
 router.get("/embed", verifyToken, (req,res) => {

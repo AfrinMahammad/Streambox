@@ -1,11 +1,9 @@
-// Function to show the message box
 function showMessageBox(key) {
   document.getElementById('messageBoxOverlay').style.display = 'flex';
   const keyval=key.toString();
   document.getElementById('embed-code').innerText = `<iframe width="1000" height="800" src="http://localhost:5000/embed?key=${keyval}" frameborder='0'></iframe>`
 }
 
-// Function to close the message box
 function closeMessageBox() {
   document.getElementById('messageBoxOverlay').style.display = 'none';
 }

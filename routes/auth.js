@@ -90,12 +90,9 @@ router.get("/signin",(req, res, next) => {
 
 router.get("/logout",verifyToken, logout);
 
-//CREATE A USER
 router.post("/createNewUser", signup);
-//SIGN IN
 router.post("/userValidation", signin);
-//GOOGLE AUTH
-router.post("/google");
+
 
 
 export default router;
