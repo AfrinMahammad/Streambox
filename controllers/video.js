@@ -1,7 +1,6 @@
 import User from "../models/User.js";
 import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
-import { createError } from "../error.js";
 import { uploadVideo, deleteS3Object } from "./videoupload.js";
 
 import AWS from "aws-sdk";
@@ -149,10 +148,20 @@ export const updateVideo = async (req, res, next) => {
   }
 };
 
+export const getVideo = async (req, res, next) => {
+  try {
+    const video = await Video.findById(req.params.id);
+    if (!video) return res.status(404).send("Video Not Found");
+    res.status(200).json(video);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const deleteVideo = async (req, res, next) => {
   try {
     const video = await Video.findById(req.params.id);
-    if (!video) return next(createError(404, "Video not found!"));
+    if (!video) return res.status(404).json({message: "Video not found!"});
     const imgKey = video.imgKey;
     const videoKey = video.videoKey;
     const captionsKey = video.captionsKey;

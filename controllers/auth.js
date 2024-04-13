@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import { createError } from "../error.js";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
@@ -43,7 +42,7 @@ export const verifyEmail = async (req, res, next) => {
     req.session.email = useremail;
 
     const user = await User.findOne({ email: useremail });
-    if (user) return next(createError(409, "User already exists!"));
+    if (user) return res.status(409).json({message: "User already exists!"});
 
     const name= useremail.split('@')[0]
 
@@ -88,10 +87,10 @@ export const signin = async (req, res, next) => {
   try {
 
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return next(createError(404, "User not found!"));
+    if (!user) return res.status(404).json({message: "User not found!"});
 
     const isCorrect = await bcrypt.compare(req.body.password, user.password);
-    if (!isCorrect) return next(createError(400, "Wrong Credentials"));
+    if (!isCorrect) return res.status(400).json({message: "Wrong Credentials"});
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: "24h" });
     const { password, ...others } = user._doc;
@@ -148,7 +147,7 @@ export const forgotPW = async (req, res, next) => {
   req.session.email = useremail;
 
   const user = await User.findOne({ email: useremail });
-  if (!user) return next(createError(404, "User not found!"));
+  if (!user) return res.status(404).json({message: "User not found!"});
 
   const name= useremail.split('@')[0]
 

@@ -5,8 +5,8 @@
 .video-player{
     position: relative;
     background-image: var(--background-image-url);
-    padding: 8% 10% 10% 8%;
-    width: 100%;
+    padding: 10% 12% 10% 12%;
+    width: 90%;
     height: auto;
     overflow: hidden;
 }
