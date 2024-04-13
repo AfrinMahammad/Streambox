@@ -154,6 +154,7 @@ export const forgotPW = async (req, res, next) => {
 
   const otp = generateRandomNumber();
   req.session.otp = otp;
+  console.log(req.session);
 
   const subject = "OTP to change your StreamBox Password";
   const html = `<p>Dear ${name}, <br><br></p><p> Your One Time Password to verify your login id and change your STREAMBOX password is <b>${otp}<b></p> <br>Warm Regards,<br><b>TEAM STREAMBOX.</b>`;

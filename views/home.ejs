@@ -190,37 +190,37 @@ display: none;
             <div class="explore-tags">
                   <form method="get" action="/videos/tags/product-trainings">
                       <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Training
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;Product Training
                       </button>
                   </form>
                   <form method="get" action="/videos/tags/process-trainings">
                     <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process Training
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;Process Training
                     </button>
                   </form>
                   <form method="get" action="/videos/tags/hr-induction">
                       <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HR Induction
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;HR Induction
                       </button>
                   </form>
                   <form method="get" action="/videos/tags/infosec-compliance">
                       <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InfoSec
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;InfoSec
                       </button>
                   </form>
                   <form method="get" action="/videos/tags/soft-skills">
                     <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soft Skills
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;Soft Skills
                     </button>
                   </form>
                   <form method="get" action="/videos/tags/webinars">
                       <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Webinars
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;Webinars
                       </button>
                   </form>
                   <form method="get" action="/videos/tags/events">
                     <button class="list-group-item list-group-item-action" style="border: none; outline: none;">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Events
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&#x2022;</b>&nbsp;&nbsp;Events
                     </button>
                   </form>
             </div>
@@ -270,9 +270,8 @@ display: none;
     <script>
 
         const allVideos = <%- JSON.stringify(data) %>;
-        const images = <%- JSON.stringify(images) %>;
         
-        display(allVideos, images);
+        display(allVideos);
 
     </script>
     <script>

@@ -1,9 +1,9 @@
-function display(data, images) {
+function display(data) {
   const n = data.length;
   if (n === 0) {
     document.getElementById("videos").innerHTML = "No Videos";
   } else {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < n; i++) {
       const card = document.createElement("div");
       card.classList.add("card");
 
@@ -31,7 +31,7 @@ function display(data, images) {
       });
 
       const imgElement = document.createElement("img");
-      imgElement.src = `data:image/png;base64,` + images[i];
+      imgElement.src = `https://d2fpvsof67xqc9.cloudfront.net/${data[i].imgKey}`;
       card.appendChild(imgElement);
       card.appendChild(a);
 

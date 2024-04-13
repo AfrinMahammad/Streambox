@@ -83,14 +83,14 @@
         <div id="profile-logo">
         </div>
         <div class="videoPlayer">
-          <video id="videoPlayer"  style="width:100%;"  controls controlsList="nodownload" muted loop >
-            <source id="videoSource" src="/videos/streamvideo?data=<%= encodeURIComponent(JSON.stringify({ bucketName: process.env.VIDEO_BUCKET , Key: key })) %>" type="video/mp4">
+          <video id="videoPlayer"  style="width:100%;" controls controlsList="nodownload" muted loop >
+            <source id="videoSource" src='https://d2fpvsof67xqc9.cloudfront.net/<%= key %>' type="video/mp4">
             <track src="/videos/stream?data=<%= encodeURIComponent(JSON.stringify({ bucketName: process.env.VTT_BUCKET, Key: key + '.vtt' })) %>" label="English captions" kind="captions" srclang="en"  default>
           </video>
         </div>
 
         <div class="btns-class" style="display: flex;">
-          <button style="font-size: 26px;" class="like-btn" onclick="toggleLike(this,'<%= id%>')">
+          <button style="font-size: 26px;" class="like-btn" onclick="toggleLike(this,'<%= id %>')">
             <i class="fas fa-thumbs-up"></i>
           </button>
             

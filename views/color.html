@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Video Player with Logo Upload</title>
-  <!-- Video.js CSS -->
   <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
-  <!-- Video.js JavaScript -->
   <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.js"></script>
   <style>
     /* Custom logo style */
     #logo {
@@ -73,6 +73,11 @@
       var brightness = Math.round(((r * 299) + (g * 587) + (b * 114)) / 1000);
       return (brightness > 125) ? '#000000' : '#ffffff';
     }
+  </script>
+   <script>
+    var player = videojs('my-video');
+    player.qualityLevels();
+    player.play();
   </script>
 </body>
 </html>

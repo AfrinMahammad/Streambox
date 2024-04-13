@@ -47,8 +47,15 @@ editButton.addEventListener('click', function() {
         });
     }
 });
-    
-deleteButton.addEventListener('click', function() {
+
+
+deleteButton.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    $('#deleteConfirmationModal').modal('show'); 
+});
+  
+document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+    console.log('Confirmed action');
     fetch(`/users/${userId}`, {
         method: 'DELETE'
     }).then(res => {
@@ -65,4 +72,5 @@ deleteButton.addEventListener('click', function() {
     }).catch(error => {
         console.error('Fetch error:', error);
     });
-});
+    $('#confirmationModal').modal('hide');
+});  

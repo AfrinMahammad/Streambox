@@ -20,12 +20,12 @@ import session from 'express-session';
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.header('Pragma', 'no-cache');
-  res.header('Expires', 0);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+//   res.header('Pragma', 'no-cache');
+//   res.header('Expires', 0);
+//   next();
+// });
 
 app.use(session({
   secret: process.env.SESSION_SECRET_KEY, 
@@ -97,7 +97,7 @@ app.use((err, req, res, next) => {
 
 
 
-const port = 5000;
+const port = 3000;
 
 app.listen(port, () => {
   try {

@@ -19,7 +19,7 @@ export const addCustoms = async(req, res, next) => {
                 await deleteS3Object('streambox-logos', logoObjectKey);
             logoObjectKey = `${req.user.id}-${logoId}-${logoName}`;
             await new Promise((resolve, reject) => {
-                uploadFile(process.env.LOGO_BUCKET, logoObjectKey, logoData, (err, logoURL) => {
+                uploadFile(process.env.LOGO_BUCKET, logoObjectKey, logoData, "image/png",(err, logoURL) => {
                     if(err){
                         reject(err);
                     }
