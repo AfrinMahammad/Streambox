@@ -1,7 +1,7 @@
 function showMessageBox(key) {
   document.getElementById('messageBoxOverlay').style.display = 'flex';
   const keyval=key.toString();
-  document.getElementById('embed-code').innerText = `<iframe width="1000" height="800" src="http://localhost:5000/embed?key=${keyval}" frameborder='0'></iframe>`
+  document.getElementById('embed-code').innerText = `<iframe width="1000" height="800" src="https://streambox-ydlk.onrender.com/embed?key=${keyval}" frameborder='0'></iframe>`
 }
 
 function closeMessageBox() {
