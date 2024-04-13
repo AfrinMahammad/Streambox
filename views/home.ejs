@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="/static/css/home.css">
     <!-- <link rel="stylesheet" href="../css/video-player.css"> -->
 </head>
 <style>
@@ -118,9 +118,9 @@ display: none;
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-3">
-          <form class="form-inline" method="get" action="/videos/search" >
+          <form class="form-inline" method="get" action="/videos/search">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" name="search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="searchBtn"><i class="fas fa-search"></i></button>
           </form>
         </li>
             <li class="nav-item mr-3">
@@ -136,6 +136,7 @@ display: none;
             <button style="border: none; outline: none;" class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-bell"></i>
           </form>
         </li> -->
+
         <li class="nav-item ml-3">
           <form class="form-inline" method="get" action="/users/find">
             <button style="border: none; outline: none;" class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-user"></i>
@@ -286,7 +287,7 @@ display: none;
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../js/confirm.js"></script>
-    <script src="../js/logo.js"></script>
+    <script src="/static/js/confirm.js"></script>
+    <script src="/static/js/logo.js"></script>
 </body>
 </html>
