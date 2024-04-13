@@ -83,7 +83,7 @@
         <div id="profile-logo">
         </div>
         <div class="videoPlayer">
-          <video id="videoPlayer" style="width:80%; padding-left: 18%;" controls controlsList="nodownload" muted loop >
+          <video id="videoPlayer" style="width:80%; border:none; padding-left: 18%;" controls controlsList="nodownload" muted loop >
             <source id="videoSource" src='https://d2fpvsof67xqc9.cloudfront.net/<%= key %>' type="video/mp4">
             <track src="/videos/stream?data=<%= encodeURIComponent(JSON.stringify({ bucketName: process.env.VTT_BUCKET, Key: key + '.vtt' })) %>" label="English captions" kind="captions" srclang="en"  default>
           </video>
@@ -171,7 +171,8 @@
     const imgElement = document.createElement("img");
     imgElement.src = `data:image/png;base64,` + logo_img;
     logo.appendChild(imgElement);
-
+    logo.style.marginLeft = "17%";
+    
     const theme = decodedData['theme'];
     var background_theme;
     switch(theme){
