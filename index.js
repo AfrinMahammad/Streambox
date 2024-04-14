@@ -55,10 +55,13 @@ app.get("/",(req, res) => {
     res.redirect("/home")
 });
 
+app.get("/video-quality", verifyToken, (req,res) => {
+  res.render("video-quality");
+});
 
 app.get("/embed", (req,res) => {
   console.log(req.query.key);
-  res.render("embed", {key: req.query.key})
+  res.render("embed", {key: req.query.key});
 });
 
 app.get("/home",  verifyToken, getHomeCards)
