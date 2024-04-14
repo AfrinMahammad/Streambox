@@ -21,4 +21,4 @@ Features of StreamBox- Video player:
 - Express JS
 - MongoDB
 - HTML, CSS, JavaScript
-- AWS - S3, Amazon Transcribe, AWS CloudFront, AWS MediaConvert, AWS Lambda
+- AWS - S3, Amazon Transcribe, AWS CloudFront, AWS MediaConvert, AWS Lambda, EC2
