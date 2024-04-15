@@ -10,7 +10,7 @@
 <body>
       <div class="video-player" style="padding-left: 20%; padding-top: 8%; width: 80%;">
         <video id="videoPlayer" width="100%"  controls controlsList="nodownload" muted loop >
-            <source id="videoSource" src='https://d2fpvsof67xqc9.cloudfront.net/660ce2f8b0a3fb0e5b2572dd-df3d9664-f0c8-484c-81d1-3bbefaafcf3a-high_quality.mp4' type="video/mp4">
+            <source id="videoSource" src='https://d2fpvsof67xqc9.cloudfront.net/660ce2f8b0a3fb0e5b2572dd-df3d9664-f0c8-484c-81d1-3bbefaafcf3a-high_quality_360p.mp4' type="video/mp4">
             <track src="/videos/stream?data=<%= encodeURIComponent(JSON.stringify({ bucketName: process.env.VTT_BUCKET, Key : '660ce2f8b0a3fb0e5b2572dd-df3d9664-f0c8-484c-81d1-3bbefaafcf3a-high_quality.mp4.vtt' })) %>" label="English captions" kind="captions" srclang="en"  default>
         </video>
         <select id="qualitySelector" onchange="changeQuality()">
