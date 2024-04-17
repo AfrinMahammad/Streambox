@@ -18,14 +18,6 @@ const CustomSchema = new mongoose.Schema({
         type: String,
         default: 'default-theme'
     },
-    // allowFullScreen: {
-    //     type: Number,
-    //     default: 1
-    // },
-    // allowPicInPic: {
-    //     type: Number,
-    //     default: 1
-    // }
 },
 {timestamps: true}
 );
