@@ -182,8 +182,8 @@
           window.location.href='/'
       });
       const upload = document.getElementById('upload')
-      upload.addEventListener('submit',function(event){
-        this.disabled = true;
+      upload.addEventListener('click',function(event){
+        upload.innerHTML ="Uploading..."
       })
     </script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
