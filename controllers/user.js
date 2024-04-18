@@ -144,6 +144,7 @@ export const watch = async (req, res, next) => {
       }
 }
 
+//To check whether a video is in watchlater or not
 export const trackStatus = async (req, res, next) =>{
     try{
         const watched = await User. findOne({_id:req.user.id, watchLater:{$in:[req.params.id]}})
@@ -155,12 +156,12 @@ export const trackStatus = async (req, res, next) =>{
     }
 }
 
+//To check whether a video is liked/disliked
 export const checkStatus = async (req, res, next) => {
     try{
-        // console.log("isliked controller")
         const liked = await User.findOne({_id: req.user.id, likedVideos: {$in: [req.params.id]}})
         const disliked = await User.findOne({_id: req.user.id, dislikedVideos: {$in: [req.params.id]}})
-        // console.log(liked);
+        
         if(liked) res.status(200).json({liked: 1, disliked: 0})
         else if(disliked) res.status(200).json({liked: 0, disliked: 1})
         else res.status(200).json({liked:0, disliked: 0})
