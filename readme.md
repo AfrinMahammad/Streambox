@@ -11,11 +11,14 @@ Features of StreamBox:
   8. Viewers can mark videos to watch later.
   9. Viewcount on each video.
   10. Can watch videos in a customized video player.
+
 Features of StreamBox- Video player:
   1. Generate captions to your videos
   2. Can continue watching fro where you have previously stopped.
   3. Add theme to your video player
   4. Add logo of your video player
+  5. Watch videos in multiple video quality resolutions.
+  
 ## Technologies & Frameworks used
 - NodeJS
 - Express JS
