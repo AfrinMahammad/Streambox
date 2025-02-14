@@ -14,7 +14,7 @@ Features of StreamBox:
 
 Features of StreamBox- Video player:
   1. Generate captions to your videos
-  2. Can continue watching fro where you have previously stopped.
+  2. Can continue watching from where you have previously stopped.
   3. Add theme to your video player
   4. Add logo of your video player
   5. Watch videos in multiple video quality resolutions.
